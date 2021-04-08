@@ -2,34 +2,63 @@
 
 wubba lubba dub dub.
 
-### Markdown
+------
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### macOS 通过“终端”批量解压文件
 
-```markdown
-Syntax highlighted code block
+下了一堆老片，几百个文件都是压缩包，还带密码的。终端操作一波一次性解决了。
 
-# Header 1
-## Header 2
-### Header 3
+#### 终端安装 p7zip 和 unrar
 
-- Bulleted
-- List
+##### 1、安装 homebrew，可以管理命令行程序。
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+##### 2、用 homebrew 安装解压程序
 
-### Jekyll Themes
+解压zip文件：p7zip
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/MADAOohoh/madao/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+解压rar文件：unrar
 
-### Support or Contact
+```
+brew install p7zip
+brew install unrar
+```
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+##### 3、进入要解压的文件目录：cd 文件路径
+
+> 把文件夹拖到终端中即可获取路径
+
+```
+cd /Users/madao/Downloads
+```
+
+##### 4、执行解压
+
+解压zip文件：7z x 文件名 -o/解压文件的存放路径
+
+> 解压指定zip文件：'a.zip'
+>
+> 解压当前目录下的所有zip文件：'*.zip'
+
+```
+7z x '*.zip' -o/Users/madao/Downloads/1
+```
+
+解压rar文件：unrar x 文件名 -o/解压文件的存放路径
+
+> 解压指定zip文件：'a.zip'
+>
+> 解压当前目录下的所有zip文件：'*.zip'
+
+```markdown
+unrar x '*.zip' -o/Users/madao/Downloads/1
+```
+
+##### 5、其他
+
+如果是有密码的压缩包，执行之后会提示输入密码，输入+回车即可。
+
+多个文件也只需要输入一次密码。
